@@ -32,6 +32,7 @@ namespace CustomRichTextBlock
 
         RichTextBlock _richTextBlock;
         StringBuilder builder = new StringBuilder();
+        Regex urlRx = new Regex(@"(?<url>(http:[/][/]|www.)([a-z]|[A-Z]|[0-9]|[/.]|[~])*)", RegexOptions.IgnoreCase);
 
         private readonly Dictionary<string, string> emojiDict = new Dictionary<string, string>
     {
@@ -62,15 +63,26 @@ namespace CustomRichTextBlock
 
         private void SetRichTextBlock(string value)
         {
-            var r = new Regex(builder.ToString()); //获取正则。
-            var mc = r.Matches(value); //匹配富文本，获取匹配到的集合。
-            foreach (Match m in mc) //遍历集合将richText中所有的值转换成xaml的形式。
+            MatchCollection matches = urlRx.Matches(value);
+            var r = new Regex(builder.ToString()); 
+            var mc = r.Matches(value); 
+            foreach (Match m in mc) 
             {
-                //string.Format 中的内容不要出现换行符，否则会出现换行出错。
-                value = value.Replace(m.Value, string.Format(@"<InlineUIContainer><Border><Image Source=""ms-appx:///Assets/Emoji/{0}.png"" Width=""30"" Height=""30""/></Border></InlineUIContainer>", emojiDict[m.Value]));
+                value = value.Replace(m.Value, string.Format(@"<InlineUIContainer><Border><Image Source=""ms-appx:///Assets/Emoji/{0}.png"" Margin=""2,0,2,0"" Width=""30"" Height=""30""/></Border></InlineUIContainer>", emojiDict[m.Value]));
+            }
+            foreach (Match match in matches)
+            {
+                string url = match.Groups["url"].Value;
+                //string newurl = "";
+                //foreach(string i in url)
+                //{
+                //    newurl.ad
+                //}
+                value = value.Replace(url, 
+                    string.Format("<InlineUIContainer><Border><HyperlinkButton Margin=\"0,0,0,-4\" Padding=\"0,2,0,0\" NavigateUri =\"{0}\"><StackPanel HorizontalAlignment=\"Center\" Height=\"25\" Width=\"90\" Background=\"#FFB8E9FF\" Orientation = \"Horizontal\"><Image Margin=\"5,0,0,0\" Source = \"/Assets/Emoji/[哈哈].png\" Width = \"15\" Height = \"15\"/><TextBlock Margin=\"4,2.5,0,0\" Text=\"网页链接\" Foreground=\"White\" FontFamily=\"Microsoft YaHei UI\" FontSize=\"14\" FontWeight=\"Bold\"/></StackPanel ></HyperlinkButton></Border></InlineUIContainer>", url));
             }
             value = value.Replace("\r\n", "<LineBreak/>"); //将换行符转换成<LineBreak/>,用于实现换行。
-
+            
 
             var xaml = string.Format(@"<Paragraph 
                                         xmlns=""http://schemas.microsoft.com/winfx/2006/xaml/presentation""
