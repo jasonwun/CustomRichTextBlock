@@ -8,6 +8,6 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+        <local:MyRichTextBlock Text="qweqweqw[哈哈]eqweqw"/>
     </Grid>
 </Page>
