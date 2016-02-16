@@ -8,7 +8,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="local:MyRichTextBlock">
                     <Border HorizontalAlignment="Left" Width="auto" Height="auto">
-                        <RichTextBlock x:Name="ChildRichTextBlock"/>
+                        <RichTextBlock x:Name="ChildRichTextBlock" TextIndent="-5"/>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
