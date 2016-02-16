@@ -8,8 +8,9 @@ translate specific plain text into emoji image, hyperlink button, etc.
 
 ## Feature 
  
- Only need to input the plain text in the property of Text.
- Text property bindable.
+ 1. Only need to input the plain text in the property of Text.
+ 
+ 2. Text property bindable.
 
 
 
