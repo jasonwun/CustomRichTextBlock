@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Text;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
@@ -22,6 +23,7 @@ namespace CustomRichTextBlock
     /// </summary>
     sealed partial class App : Application
     {
+        //***DON'T SET THE NAME OF THE IMAGE THE SAME AS THE TEXT YOU WANT TO RECOGNIZE***
         #region EmojiDict
         public static readonly Dictionary<string, string> emojiDict = new Dictionary<string, string>
     {
@@ -52,6 +54,7 @@ namespace CustomRichTextBlock
         };
         #endregion
 
+        public static StringBuilder _textbuilder = new StringBuilder();
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -63,6 +66,15 @@ namespace CustomRichTextBlock
                 Microsoft.ApplicationInsights.WindowsCollectors.Session);
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+
+            //Set up the rule of recognizing specific text into stringbuilder
+            foreach (var key in emojiDict.Keys)
+            {
+                _textbuilder.Append(key.Replace("[", @"\[").Replace("]", @"\]"));
+
+                _textbuilder.Append("|");
+            }
+            _textbuilder.Remove(_textbuilder.Length - 1, 1);//Delete the last "|" symbol
         }
 
         /// <summary>
