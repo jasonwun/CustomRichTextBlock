@@ -111,6 +111,7 @@
     <None Include="CustomRichTextBlock_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\CustomRichTextBlock.gif" />
     <Content Include="Assets\Emoji\01.png" />
     <Content Include="Assets\Emoji\02.png" />
     <Content Include="Assets\Emoji\03.png" />
