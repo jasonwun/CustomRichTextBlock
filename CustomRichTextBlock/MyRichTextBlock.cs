@@ -116,9 +116,6 @@ namespace CustomRichTextBlock
 
             builder = App._textbuilder;
         }
-
-        
-
-        
+  
     }
 }

@@ -10,7 +10,7 @@
     <StackPanel Orientation="Vertical" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <local:MyRichTextBlock Text="{Binding ElementName=InputTextbox, Path=Text}" Margin="85,0,85,60" Height="241"/>
 
-        <TextBox x:Name="InputTextbox" Height="74" Margin="0,0,0,20"/>
+        <TextBox x:Name="InputTextbox" TextWrapping="Wrap" MinHeight="30" Height="auto" Margin="0,0,0,20"/>
 
         <TextBlock Text="You can copy such these blocks of text and paste them to the textbox above:  [拜拜]  [弱]  [doge]                  http://t.cn/RGJJVdQ " TextWrapping="WrapWholeWords"
                    IsTextSelectionEnabled="True"/>
