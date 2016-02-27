@@ -18,4 +18,4 @@ translate specific plain text into emoji image, hyperlink button, etc.
 
 ## Known issue
  
- Input with plain text directly will cause xaml reader throws exception. The only workaround here is using binding on the control, just like how I do on the project.
+ The control will not trigger the textchanged event if the plain text is directly input in Text property. You shall use binding to bind the plain text to the control.
