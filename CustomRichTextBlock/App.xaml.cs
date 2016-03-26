@@ -54,7 +54,7 @@ namespace CustomRichTextBlock
         };
         #endregion
 
-        public static StringBuilder _textbuilder = new StringBuilder();
+        public static StringBuilder builder = new StringBuilder();
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -70,11 +70,11 @@ namespace CustomRichTextBlock
             //Set up the rule of recognizing specific text into stringbuilder
             foreach (var key in emojiDict.Keys)
             {
-                _textbuilder.Append(key.Replace("[", @"\[").Replace("]", @"\]"));
+                builder.Append(key.Replace("[", @"\[").Replace("]", @"\]"));
 
-                _textbuilder.Append("|");
+                builder.Append("|");
             }
-            _textbuilder.Remove(_textbuilder.Length - 1, 1);//Delete the last "|" symbol
+            builder.Remove(builder.Length - 1, 1);//Delete the last "|" symbol
         }
 
         /// <summary>

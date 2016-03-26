@@ -8,7 +8,9 @@
     mc:Ignorable="d">
 
     <StackPanel Orientation="Vertical" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <local:MyRichTextBlock Text="{Binding ElementName=InputTextbox, Path=Text}" Margin="85,0,85,60" Height="241"/>
+        <RichTextBlock local:BindingHelper.Text="{Binding ElementName=InputTextbox, Path=Text}"
+                       Margin="85,0,85,60" 
+                       Height="241"/>
 
         <TextBox x:Name="InputTextbox" TextWrapping="Wrap" MinHeight="30" Height="auto" Margin="0,0,0,20"/>
 
