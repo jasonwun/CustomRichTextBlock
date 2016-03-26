@@ -11,11 +11,6 @@ translate specific plain text into emoji image, hyperlink button, etc.
  1. Only need to input the plain text in the property of Text.
  
  2. Text property bindable.
-
-
-
-
-
-## Known issue
  
- The control will not trigger the textchanged event if the plain text is directly input in Text property. You shall use binding to bind the plain text to the control.
+ 3. Use Regular Expression to convert the plain text to XAML language based on the demand of your app.
+
